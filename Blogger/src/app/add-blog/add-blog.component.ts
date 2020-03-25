@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: "app-add-blog",
@@ -7,12 +8,16 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AddBlogComponent implements OnInit {
   constructor() {}
-  blog = [];
+  blogs = [];
   ngOnInit() {}
 
-  addBlog(title: { value: any }, content: { value: any }) {
-    let blog = { title: title.value, content: content.value };
-    
+  addBlog(title, content) {
+    let blog = { "title": title.value, "content": content.value };
+    if(localStorage.getItem("blogs")){
+      this.blogs = JSON.parse(localStorage.getItem("blogs"))
+    }
+    this.blogs.push(blog)
+    localStorage.setItem("blogs",JSON.stringify(this.blogs))
     alert("Blog submitted");
   }
 }
