@@ -1,4 +1,4 @@
-//declaration of Mysql and Express
+//declaration of Mysql, Express and Cors
 const mysql = require('mysql');
 const express = require("express");
 var cors = require('cors')
@@ -54,30 +54,28 @@ app.post('/submit', (req, res) => {
   let data = req.body
   console.log(data);
 
-  var newTable = "CREATE TABLE IF NOT EXISTS NewUser (Username VARCHAR(255), Email VARCHAR(255), Password VARCHAR(255))";
+  // --------------------------------------------------------------------------------------------------------
+
+  // Creating unique Blog-table
+  var newTable = "CREATE TABLE IF NOT EXISTS NewBlogData (Blog-Title VARCHAR(255), Blog-Content VARCHAR(255))";
   connection.query(newTable, function (con) {
     if (con) throw con;
-    console.log("Table created");
+    console.log("Blog  created");
   });
 
-  var newTable = "INSERT INTO NewUser ( Username ,Email , Password ) VALUES(" + '"' + data.myName + '"' + ',' + '"' + data.myMail + '"' + ',' + '"' + data.pass + '"' + ")";
+  // Creating Blog-table
+  var newTable = "INSERT INTO NewBlogData ( Blog-Title ,Blog-Content) VALUES(" + '"' + data.myName + '"' + ',' + '"' + data.myMail + '"' + ',' + '"' + data.pass + '"' + ")";
   connection.query(newTable, function (con) {
     if (con) throw con;
-    console.log("record inserted in table");
+    console.log("Blog has been updated");
   });
-
-
-
   console.log(data)
  
 })
 
-
+// Deleting Blog-Table
 app.get('/remove', (req, res) => {
-
-
-
-  var newTable = "DROP TABLE IF EXISTS NewUser";
+  var newTable = "DROP TABLE IF EXISTS NewBlogData";
   connection.query(newTable, function (con, result) {
     if (con) throw con;
     console.log("Table deleted");
