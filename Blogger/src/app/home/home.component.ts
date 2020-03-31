@@ -10,8 +10,15 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   constructor() { }
-
+  blogs = [];
   ngOnInit() {
+    // this.blogs = localStorage.getItem("localStorage");
+    // console.log(this.blogs);
+  }
+  removeBlog(blog){
+    let index = this.blogs.indexOf(blog)
+    this.blogs.splice(index, 1);
+    localStorage.setItem("localStorage", JSON.stringify(this.blogs));
   }
 
 }

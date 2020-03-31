@@ -10,9 +10,23 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AddBlogComponent implements OnInit {
   data: any;
+  blogs = [];
   RemoveBlog : boolean = false;
   BlogTitle = new FormControl("");
   BlogContent = new FormControl("");
+
+  click() {
+    let clicked = {
+      title: this.BlogTitle.value,
+      content: this.BlogContent.value,
+    };
+    localStorage.setItem("localStorage", JSON.stringify(clicked));
+    this.data = JSON.parse(localStorage.getItem("localStorage"));
+    this.save(clicked);
+  }
+  save(clicked) {
+      console.log(this.data);
+  }
   constructor() {
 
     // click() {
@@ -37,16 +51,18 @@ export class AddBlogComponent implements OnInit {
   
 
   }
-  // blogs = [];
   ngOnInit() {}
 
+
   // addBlog(title, content) {
-  //   let blog = { title: title.value, content: content.value };
+  //   let blog = { "title": title.value, "content": content.value };
   //   if (localStorage.getItem("blogs")) {
   //     this.blogs = JSON.parse(localStorage.getItem("blogs"));
   //   }
   //   this.blogs.push(blog);
   //   localStorage.setItem("blogs", JSON.stringify(this.blogs));
+  //   title.value = "";
+  //   content.value = "";
   //   alert("Blog submitted");
   // }
 }

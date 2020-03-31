@@ -11,7 +11,8 @@ export class RegisterComponent implements OnInit {
   name = new FormControl("");
   mail = new FormControl("");
   pass = new FormControl("");
-  http: any;
+  
+  constructor(private http: HttpClient){}
 
   click() {
     let clicked = {
@@ -24,12 +25,10 @@ export class RegisterComponent implements OnInit {
   reset() {
     // this.http.post('http://localhost:4000/remove', { responseType: 'text' }).subscribe((res) => {
     //   console.log(res);
-    this.http.get("http://localhost:4000/remove", {}).subscribe(data => {
+    this.http.get("https://jsonplaceholder.typicode.com/todos/1", {}).subscribe(data => {
       console.log(data);
     });
   }
-
-  constructor() {}
 
   ngOnInit() {}
 }
