@@ -9,15 +9,28 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./add-blog.component.css"]
 })
 export class AddBlogComponent implements OnInit {
-  data: any;
-  blogs = [];
   RemoveBlog: boolean = false;
-  BlogTitle = new FormControl("");
-  BlogContent = new FormControl("");
+  data: any;
+  title: string;
+  content: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
+
+  blogSubmitted() {
+    let blogData = {
+      blogName: this.title,
+      blogContent: this.content,
+    };
+
+    console.log("Blog created", blogData);
+    localStorage.setItem("localStorage", JSON.stringify(blogData));
+    this.data = JSON.parse(localStorage.getItem("localStorage"));
+    this.save(this.data);
+  }
+
+  save(blogContent) {
     this.http
-      .get("http://localhost:4000/sample", { responseType: "text" })
+      .post("http://localhost:4000/NewBlog", blogContent)
       .subscribe(data => {
         console.log(data);
       });

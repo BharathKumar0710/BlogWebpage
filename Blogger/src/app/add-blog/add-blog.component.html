@@ -1,14 +1,14 @@
 <br><br>
 <form class="container">
     <div class="form-group">
-        <label for="title">Title of the Blog</label>
-        <input class="form-control" id="title" formControlName="title" [formControl]="BlogTitle" placeholder="Enter Title">
+        <label>Title of the Blog</label>
+        <input class="form-control" name="title" [(ngModel)]="title" placeholder="Enter Title">
     </div>
     <div class="form-group">
-        <label for="content">Write the content of the Blog</label>
-        <input class="form-control" id="content" formControlName="content" [formControl]="BlogContent" placeholder="Your Blog here">
+        <label>Write the content of the Blog</label>
+        <input class="form-control" name="content" [(ngModel)]="content" placeholder="Your Blog here">
     </div>
-    <button type="submit" class="btn btn-primary" (click)="click()">Submit</button> &nbsp;&nbsp;
+    <button type="submit" class="btn btn-primary" (click)="blogSubmitted()">Submit</button> &nbsp;&nbsp;
     <button type="reset" class="btn btn-danger" (click)="remove()" *ngIf="!RemoveBlog">Remove Blog</button>
 
 </form>

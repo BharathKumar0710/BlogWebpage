@@ -14,6 +14,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     // this.blogs = localStorage.getItem("localStorage");
     // console.log(this.blogs);
+    this.getblog();
+  }
+
+  getblog(){
+    console.log('bloglist');
   }
   removeBlog(blog){
     let index = this.blogs.indexOf(blog)

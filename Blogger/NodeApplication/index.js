@@ -54,25 +54,48 @@ app.use(cors());
 //   res.send("Sample Triggered");
 // });
 
-app.post("/submit", (req, res) => {
+app.post("/NewBlog", (req, res) => {
   let data = req.body;
   console.log(data);
 
   // Creating unique Blog-table
-  var newTable =
-    "CREATE TABLE IF NOT EXISTS NewBlogData (Name VARCHAR(255),  Mail VARCHAR(255),Password VARCHAR(255))";
-  connection.query(newTable, function(con) {
+  var blogTable =
+    "CREATE TABLE IF NOT EXISTS NewBlogData (BlogName VARCHAR(255),  BlogContent VARCHAR(255))";
+  connection.query(blogTable, function(con) {
     if (con) throw con;
     console.log("Blog  created");
   });
 
   // Creating Blog-table
+  var blogTable =
+  "INSERT INTO NewBlogData ( BlogName , BlogContent) VALUES(" +'"' +data.blogName +'"' +"," +'"' +data.blogContent +'"' +")";
+
+  connection.query(blogTable, function(con) {
+    if (con) throw con;
+    console.log("Blog has been updated");
+  });
+  console.log(data);
+});
+
+app.post("/submit", (req, res) => {
+  let data = req.body;
+  console.log(data);
+
+  // Creating unique Registration Table
   var newTable =
-  "INSERT INTO NewBlogData ( Name , Mail, Password) VALUES(" +'"' +data.name +'"' +"," +'"' +data.mail +'"' +"," +'"' +data.password +'"' +")";
+    "CREATE TABLE IF NOT EXISTS UserDetails (Name VARCHAR(255),  Mail VARCHAR(255),Password VARCHAR(255))";
+  connection.query(newTable, function(con) {
+    if (con) throw con;
+    console.log("New user details inserted");
+  });
+
+  // Creating Registration
+  var newTable =
+  "INSERT INTO UserDetails ( Name , Mail, Password) VALUES(" +'"' +data.name +'"' +"," +'"' +data.mail +'"' +"," +'"' +data.password +'"' +")";
 
   connection.query(newTable, function(con) {
     if (con) throw con;
-    console.log("Blog has been updated");
+    console.log("New user details inserted");
   });
   console.log(data);
 });
