@@ -7,13 +7,15 @@ import { AddBlogComponent } from "./add-blog/add-blog.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RegisterComponent } from "./register/register.component";
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AddBlogComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginPageComponent
   ],
 
   imports: [

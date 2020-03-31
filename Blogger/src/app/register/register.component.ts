@@ -8,24 +8,39 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
-  name = new FormControl("");
-  mail = new FormControl("");
-  pass = new FormControl("");
-  
-  constructor(private http: HttpClient){}
+  data: any;
+  myName: string;
+  myMail: string;
+  passw: string;
 
-  click() {
-    let clicked = {
-      myName: this.name.value,
-      myMail: this.mail.value,
-      pass: this.pass.value
-    };
+  constructor(private http: HttpClient) {}
+
+  submitLogin() {
+  
+    let formData = {
+      name: this.myName,
+      mail : this.myMail,
+      password: this.passw
+    }
+
+    console.log("logindart", formData);
+     localStorage.setItem("localStorage", JSON.stringify(formData));
+     this.data = JSON.parse(localStorage.getItem("localStorage"));
+     this.save(this.data);
+  }
+
+  save(loginData) {
+    this.http
+      .post("http://localhost:4000/submit", loginData)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 
   reset() {
     // this.http.post('http://localhost:4000/remove', { responseType: 'text' }).subscribe((res) => {
     //   console.log(res);
-    this.http.get("https://jsonplaceholder.typicode.com/todos/1", {}).subscribe(data => {
+    this.http.get("http://localhost:4000/reset", {}).subscribe(data => {
       console.log(data);
     });
   }

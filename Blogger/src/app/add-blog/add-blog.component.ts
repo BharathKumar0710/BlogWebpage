@@ -11,48 +11,53 @@ import { HttpClient } from "@angular/common/http";
 export class AddBlogComponent implements OnInit {
   data: any;
   blogs = [];
-  RemoveBlog : boolean = false;
+  RemoveBlog: boolean = false;
   BlogTitle = new FormControl("");
   BlogContent = new FormControl("");
 
-  click() {
-    let clicked = {
-      title: this.BlogTitle.value,
-      content: this.BlogContent.value,
-    };
-    localStorage.setItem("localStorage", JSON.stringify(clicked));
-    this.data = JSON.parse(localStorage.getItem("localStorage"));
-    this.save(clicked);
+  constructor(private http: HttpClient) {
+    this.http
+      .get("http://localhost:4000/sample", { responseType: "text" })
+      .subscribe(data => {
+        console.log(data);
+      });
   }
-  save(clicked) {
-      console.log(this.data);
-  }
-  constructor() {
 
-    // click() {
-    //   let clicked = {
-    //     myTitle: this.BlogTitle.value,
-    //     myContent: this.BlogContent.value,
-    //   };
-    //   // localStorage.setItem("localStorage", JSON.stringify(clicked));
-    //   // this.data = JSON.parse(localStorage.getItem("localStorage"));
-    //   // this.hide = true;
-    //   // this.save(clicked);
-    // }
-  
-    // remove() {
-    //   this.hide = false;
-    //   // this.http.post('http://localhost:4000/remove', { responseType: 'text' }).subscribe((res) => {
-    //   //   console.log(res);
-    //   this.http.get('http://localhost:4000/remove',{}).subscribe((data) => {
-    //     console.log(data);
-    //   });
-    // }
-  
+  // click() {
+  //   let clicked = {
+  //     title: this.BlogTitle.value,
+  //     content: this.BlogContent.value
+  //   };
+  //   localStorage.setItem("localStorage", JSON.stringify(clicked));
+  //   this.data = JSON.parse(localStorage.getItem("localStorage"));
+  //   this.save(clicked);
+  // }
+  // save(clicked) {
+  //   this.http.post("http://localhost:4000/submit", clicked).subscribe(data => {
+  //     console.log(data);
+  //   });
+  // }
 
-  }
+  // click() {
+  //   let clicked = {
+  //     myTitle: this.BlogTitle.value,
+  //     myContent: this.BlogContent.value,
+  //   };
+  //   // localStorage.setItem("localStorage", JSON.stringify(clicked));
+  //   // this.data = JSON.parse(localStorage.getItem("localStorage"));
+  //   // this.hide = true;
+  //   // this.save(clicked);
+  // }
+
+  // remove() {
+  //   this.hide = false;
+  //   // this.http.post('http://localhost:4000/remove', { responseType: 'text' }).subscribe((res) => {
+  //   //   console.log(res);
+  //   this.http.get('http://localhost:4000/remove',{}).subscribe((data) => {
+  //     console.log(data);
+  //   });
+  // }
   ngOnInit() {}
-
 
   // addBlog(title, content) {
   //   let blog = { "title": title.value, "content": content.value };

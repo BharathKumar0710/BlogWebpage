@@ -1,3 +1,4 @@
+<br><br>
 <form class="container">
     <div class="form-group">
         <label for="title">Title of the Blog</label>
@@ -8,7 +9,7 @@
         <input class="form-control" id="content" formControlName="content" [formControl]="BlogContent" placeholder="Your Blog here">
     </div>
     <button type="submit" class="btn btn-primary" (click)="click()">Submit</button> &nbsp;&nbsp;
-    <button type="reset" class="btn btn-primary" (click)="remove()" *ngIf="!RemoveBlog">Remove Blog</button>
+    <button type="reset" class="btn btn-danger" (click)="remove()" *ngIf="!RemoveBlog">Remove Blog</button>
 
 </form>
 <!-- <p>add-blog works!</p>
