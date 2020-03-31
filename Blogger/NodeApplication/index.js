@@ -68,7 +68,7 @@ app.post("/submit", (req, res) => {
 
   // Creating Blog-table
   var newTable =
-  "INSERT INTO NewBlogData ( Name ,Mail,Password) VALUES(" +'"' +data.name +'"' +"," +'"' +data.mail +'"' +"," +'"' +data.password +'"' +")";
+  "INSERT INTO NewBlogData ( Name , Mail, Password) VALUES(" +'"' +data.name +'"' +"," +'"' +data.mail +'"' +"," +'"' +data.password +'"' +")";
 
   connection.query(newTable, function(con) {
     if (con) throw con;
