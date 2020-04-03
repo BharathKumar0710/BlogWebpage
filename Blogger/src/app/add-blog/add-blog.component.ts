@@ -28,9 +28,9 @@ export class AddBlogComponent implements OnInit {
     this.save(this.data);
   }
 
-  save(blogContent) {
+  save(blogContentdata) {
     this.http
-      .post("http://localhost:4000/NewBlog", blogContent)
+      .post("http://localhost:4000/NewBlog", blogContentdata)
       .subscribe(data => {
         console.log(data);
       });

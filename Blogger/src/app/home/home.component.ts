@@ -8,18 +8,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor(private http: HttpClient) {}
   blogs = [];
+  data: any;
+  title: string;
+  content: string;
+
   ngOnInit() {
     // this.blogs = localStorage.getItem("localStorage");
     // console.log(this.blogs);
-    this.getblog();
+    // this.getblog(loginData);
   }
 
-  getblog(){
-    console.log('bloglist');
-  }
+  // getblog(loginData) {
+  //   this.http
+  //     .get("http://localhost:4000/blogdetails", loginData)
+  //     .subscribe(data => {
+  //       console.log(data);
+  //     });
+  // }
+
   removeBlog(blog){
     let index = this.blogs.indexOf(blog)
     this.blogs.splice(index, 1);

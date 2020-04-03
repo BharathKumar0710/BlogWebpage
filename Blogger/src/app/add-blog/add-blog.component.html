@@ -1,16 +1,17 @@
 <br><br>
-<form class="container">
+<form class="container bg-dark">
     <div class="form-group">
-        <label>Title of the Blog</label>
+        <br> <br>
+        <label class="text-white">Title of the Blog</label>
         <input class="form-control" name="title" [(ngModel)]="title" placeholder="Enter Title">
     </div>
     <div class="form-group">
-        <label>Write the content of the Blog</label>
+        <label class="text-white">Write the content of the Blog</label>
         <input class="form-control" name="content" [(ngModel)]="content" placeholder="Your Blog here">
     </div>
     <button type="submit" class="btn btn-primary" (click)="blogSubmitted()">Submit</button> &nbsp;&nbsp;
     <button type="reset" class="btn btn-danger" (click)="remove()" *ngIf="!RemoveBlog">Remove Blog</button>
-
+    <br> <br>
 </form>
 <!-- <p>add-blog works!</p>
 <router-outlet></router-outlet> -->

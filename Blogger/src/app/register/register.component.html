@@ -2,7 +2,8 @@
 <div class="row">
   <div class="col-md-4 offset-md-4 form">
     <form #loginform>
-      <h3 class="text-center text-danger">Registration Page</h3> <br>
+      <br>
+      <h3 class="text-center text-danger">Registration</h3> <br>
       <div class="form-group">
         <label><b>USER NAME</b></label>
         <input type="text"  name="name" class="form-control" placeholder="Name" required [(ngModel)]="myName">
@@ -17,7 +18,7 @@
         <input type="password"  class="form-control" 
           placeholder="Password" name="pass" required [(ngModel)]="passw">
       </div>
-      <button class="btn btn-danger" type="button" (click)="submitLogin()" [routerLink]="['/home']">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp; <span>-OR-</span> &nbsp;&nbsp;&nbsp;&nbsp; 
+      <button class="btn btn-danger ml-3" type="button" (click)="submitLogin()" [routerLink]="['/home']">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp; <span>-OR-</span> &nbsp;&nbsp;&nbsp;&nbsp; 
       <button class="btn btn-danger" type="button" (click)="reset()" [routerLink]="['/login']">login</button> 
       <br><br>
     </form>

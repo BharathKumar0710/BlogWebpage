@@ -15,10 +15,10 @@ var connection = mysql.createConnection({
 });
 
 // Condition to check if connection exits
-connection.connect(function(con) {
-  if (con) throw con;
-  console.log("Connected");
-});
+// connection.connect(function(con) {
+//   if (con) throw con;
+//   console.log("Connected");
+// });
 
 // import express from 'express';
 // const app = express();
@@ -53,6 +53,40 @@ app.use(cors());
 // app.get("/sample", (req, res) => {
 //   res.send("Sample Triggered");
 // });
+
+app.get("/logindetails", (req, res) => {
+  let data = req.body;
+  console.log(data);
+
+  var loginValidation =
+    "SELECT * from UserDetails;";
+  connection.query(loginValidation, function(con) {
+    if (con) throw con;
+    console.log("Blog  created");
+  });
+});
+
+connection.connect(function(err) {
+  if (err) throw err;
+  connection.query("SELECT * FROM newblogdata", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
+
+// var updateBlog =
+// "SELECT * from NewBlogData;";
+// connection.query(updateBlog, function(con) {
+// if (con) throw con;
+// console.log("Blog  created");
+// });
+
+app.get("/blogdetails", (req, res) => {
+  let data = req.body;
+  console.log(data);
+
+ 
+});
 
 app.post("/NewBlog", (req, res) => {
   let data = req.body;
@@ -121,10 +155,10 @@ app.get("/remove", (req, res) => {
   // app.use(bodyParser.json());
 
   // app.post('/home', function(request, response) {
-  //     var username = request.body.username;
-  //     var password = request.body.password;
-  //     if (username && password) {
-  //         connection.query('SELECT * FROM NewBlogData WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+  //     var Name = request.body.Name;
+  //     var Password = request.body.Password;
+  //     if (Name && Password) {
+  //         connection.query('SELECT * FROM UserDetails WHERE Name = ? AND Password = ?', [Name, Password], function(error, results, fields) {
   //             if (results.length > 0) {
   //                 request.session.loggedin = true;
   //                 request.session.username = username;
