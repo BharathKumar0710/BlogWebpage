@@ -2,9 +2,9 @@
     <div style="padding: 20px 0px;">
         <div class="card" *ngFor="let blog of blogs">
             <span style="float: right; color: red;" (click)="removeBlog(blog)">X</span>
-            <div class="card-header"> {{ localstorage.title }} </div>
+            <div class="card-header"> {{ blog.BlogName }} </div>
             <div class="card-body">
-                <p class="card-text"> {{ localstorage.content }} </p>
+                <p class="card-text"> {{ blog.BlogContent }} </p>
             </div>
         </div>
     </div>

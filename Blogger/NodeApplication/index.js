@@ -66,13 +66,13 @@ app.get("/logindetails", (req, res) => {
   });
 });
 
-connection.connect(function(err) {
-  if (err) throw err;
-  connection.query("SELECT * FROM newblogdata", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
+// connection.connect(function(err) {
+//   if (err) throw err;
+//   connection.query("SELECT * FROM newblogdata", function (err, result, fields) {
+//     if (err) throw err;
+//     console.log(result);
+//   });
+// });
 
 // var updateBlog =
 // "SELECT * from NewBlogData;";
@@ -82,10 +82,15 @@ connection.connect(function(err) {
 // });
 
 app.get("/blogdetails", (req, res) => {
-  let data = req.body;
-  console.log(data);
-
- 
+  
+  connection.connect(function(err) {
+    if (err) throw err;
+    connection.query("SELECT * FROM newblogdata", function (err, result, fields) {
+      if (err) throw err;
+     // console.log(result);
+      res.json(result);
+    });
+  });
 });
 
 app.post("/NewBlog", (req, res) => {
